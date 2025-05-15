@@ -26,7 +26,7 @@ exercise-1/
 |------------------------------------|----------------|--------------------------------------------------------|
 | VPC (public/private subnets)       | ✔️ Done         | AZs hardcoded for validation                          |
 | EC2 in private subnet              | ⚠️ Adjusted     | Moved to public subnet to avoid NAT/bastion issues    |
-| RDS PostgreSQL                     | ▶️ Planned      | Module to be added                                    |
+| RDS PostgreSQL                     | ✔️ Done         | Module added and validated                            |
 | EC2 SG (HTTP, SSH)                 | ✔️ Done         | Open to 0.0.0.0/0                                      |
 | IAM role for EC2 → S3              | ▶️ Planned      | Will attach s3:GetObject                              |
 | Route 53 domain                    | ⚠️ Stubbed      | Placeholder, domain not provisioned                   |
