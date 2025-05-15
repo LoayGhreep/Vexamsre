@@ -5,6 +5,10 @@ This repository contains a fully modular and validated Terraform infrastructure 
 ---
 
 ## 📦 Project Overview
+<p align="center">
+  <img src="https://raw.githubusercontent.com/LoayGhreep/Vexamsre/refs/heads/main/arch.svg" alt="AWS Architecture Diagram" width="100%"/>
+  <br/>
+</p>
 
 This implementation sets up a complete AWS environment that includes:
 
