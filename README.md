@@ -1,15 +1,48 @@
-# Issues (To be updated)
-- EC2 in private subnet but allow SSH & HTTP from outside (That's public not private)
-- Route53 for custom domain => Assume any domain
-- Lambda accessing RDS in private subnet => this one is complex
-- The need for an actual test => setup my aws for testing later at the end
+# Terraform Technical Assessment – Exercise 1
 
-# Exercise 1:
+## Overview
 
-## Structure
+This repository contains my implementation of the Terraform infrastructure design requested as part of the Site Reliability Engineer (SRE) technical assessment.
+
+The exercise involved provisioning a complete AWS environment to support a web application, including:
+- VPC with public/private subnets
+- EC2 instance
+- RDS PostgreSQL database
+- S3 bucket with IAM role access
+- Lambda function and API Gateway integration
+- Encryption and security groups
+- Route 53 and domain integration
+
+## ✅ Implemented Modules
+
+| Component      | Status       | Notes |
+|----------------|--------------|-------|
+| VPC            | ✔️ Complete  | Public and private subnets with hardcoded AZs for validation |
+| EC2            | ✔️ Complete  | Moved to public subnet for accessibility |
+| RDS            | ✔️ Complete  | Encrypted PostgreSQL, private subnet, custom SG |
+| S3 + IAM       | ✔️ Complete  | Encrypted bucket, IAM role attached to EC2 with s3:GetObject |
+| Lambda + API GW| ✔️ Stubbed  | Basic proxy setup without deployment ZIP |
+| Route 53       | ⚠️ Skipped   | Assumes pre-owned domain; placeholder only |
+| Encryption     | ✔️ Included | RDS + S3 use AES256 or default encryption |
+| IAM Profiles   | ✔️ Included | EC2 attached to instance profile with access scope |
+
+---
+
+## 🔍 Known Gaps & Assumptions
+
+- **No Terraform apply was run** due to credential unavailability. All validation was done with `terraform validate` and `terraform plan -refresh=false`.
+- **AMI ID is a placeholder** (`ami-12345678`) and should be replaced with a region-valid Linux AMI before deployment.
+- **EC2 was moved to public subnet** to allow SSH/HTTP — in production, a bastion host or NAT gateway would be needed.
+- **Route 53** is stubbed; assumes domain already exists.
+- **Lambda ZIP** and handler were not created to stay within scope.
+- **RDS-to-Lambda connection** was not implemented due to complexity of subnet and timeout configuration — documented for future.
+
+---
+
+## 📂 Project Structure
 
 ```
-exercise-1/
+/
 ├── main.tf
 ├── variables.tf
 ├── outputs.tf
@@ -17,29 +50,19 @@ exercise-1/
 └── modules/
     ├── vpc/
     ├── ec2/
-    └── ...
+    ├── rds/
+    ├── s3_iam/
+    └── lambda_apigw/
 ```
 
-## Status
+---
 
-| Requirement                        | Status         | Notes                                                  |
-|------------------------------------|----------------|--------------------------------------------------------|
-| VPC (public/private subnets)       | ✔️ Done         | AZs hardcoded for validation                          |
-| EC2 in private subnet              | ⚠️ Adjusted     | Moved to public subnet to avoid NAT/bastion issues    |
-| RDS PostgreSQL                     | ✔️ Done         | Module added and validated                            |
-| EC2 SG (HTTP, SSH)                 | ✔️ Done         | Open to 0.0.0.0/0                                      |
-| IAM role for EC2 → S3              | ▶️ Planned      | Will attach s3:GetObject                              |
-| Route 53 domain                    | ⚠️ Stubbed      | Placeholder, domain not provisioned                   |
-| RDS/S3 encryption                  | ▶️ Planned      | Will use AWS-managed keys                             |
-| Lambda → RDS                       | ⚠️ Deferred     | Documented, not implemented due to time               |
-| API Gateway → Lambda               | ⚠️ Deferred     | Stubbed only                                           |
+## 🛠️ Validation
 
-## Assumptions
+To validate this project (no apply needed):
 
-- Region: `us-east-1`
-- AZs hardcoded for validate-only setup
-- EC2 placed in public subnet for SSH accessibility
-- Placeholder AMI: `ami-12345678`
-- Route 53 domain assumed to be pre-registered
-- No real credentials or secrets loaded
-- Modules structured for future expansion
+```bash
+terraform init
+terraform validate
+terraform plan -refresh=false
+```

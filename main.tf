@@ -29,3 +29,6 @@ module "s3_iam" {
   bucket_name = "my-app-bucket-${random_id.suffix.hex}" # Optional: make it unique
 }
 
+module "lambda_apigw" {
+  source = "./modules/lambda_apigw"
+}
