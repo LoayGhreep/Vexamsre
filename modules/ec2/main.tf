@@ -41,3 +41,15 @@ resource "aws_instance" "app_server" {
     Name = "app-server"
   }
 }
+
+resource "aws_instance" "app_server" {
+  ami                         = var.ami_id
+  instance_type               = var.instance_type
+  subnet_id                   = var.subnet_id
+  vpc_security_group_ids      = [aws_security_group.ec2_sg.id]
+  iam_instance_profile        = var.iam_instance_profile_name # <-- add this
+
+  tags = {
+    Name = "app-server"
+  }
+}

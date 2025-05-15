@@ -16,3 +16,8 @@ variable "instance_type" {
   type        = string
   default     = "t2.micro"
 }
+
+variable "iam_instance_profile_name" {
+  type        = string
+  description = "IAM instance profile name"
+}

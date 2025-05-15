@@ -43,9 +43,3 @@ exercise-1/
 - Route 53 domain assumed to be pre-registered
 - No real credentials or secrets loaded
 - Modules structured for future expansion
-
-## Next
-
-- Add RDS module (with private subnet group, encryption, SG) [✔️ Done]
-- Add S3 + IAM (read-only access for EC2)
-- Add Lambda + API Gateway (stub + VPC config)
