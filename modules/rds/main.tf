@@ -36,9 +36,9 @@ resource "aws_db_instance" "rds_instance" {
   allocated_storage      = 20
   storage_type           = "gp2"
   engine                 = "postgres"
-  engine_version         = "17.5-R1"
+  engine_version         = "14"
   instance_class         = "db.t3.micro"
-  username               = "admin"
+  username               = "mockeradmin"
   password               = "mockpassword123"
   db_subnet_group_name   = aws_db_subnet_group.rds_subnet_group.name
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
