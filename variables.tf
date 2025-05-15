@@ -9,3 +9,8 @@ variable "vpc_cidr_block" {
   type        = string
   default     = "10.0.0.0/16"
 }
+
+variable "ec2_ami_id" {
+  default     = "ami-12345678" # placeholder
+  description = "Mock AMI ID for validation"
+}
