@@ -31,10 +31,10 @@ This implementation sets up a complete AWS environment that includes:
 | EC2 SG (22, 80 open)               | ✅ Complete    | Global access for quick access testing |
 | S3 bucket (encrypted)              | ✅ Complete    | AES256 encryption + IAM-limited access |
 | IAM: EC2 → S3 (read-only)          | ✅ Complete    | Attached via instance profile |
-| RDS PostgreSQL (private)           | ✅ Complete    | v14.10, encrypted, private subnets |
+| RDS PostgreSQL (private)           | ✅ Complete    | v14, encrypted, private subnets |
 | Lambda Function (stub)             | ✅ Complete    | Minimal Node.js function with zip hash |
-| API Gateway → Lambda               | ✅ Complete    | Route `GET /` to Lambda |
-| Terraform validate + apply         | ✅ Complete    | Fully tested on real AWS account |
+| API Gateway → Lambda               | ✅ Complete    | Route `GET /` to Lambda (Mock) |
+| Terraform validate + apply         | ✅ Complete    | Fully tested on my AWS account |
 
 ---
 
