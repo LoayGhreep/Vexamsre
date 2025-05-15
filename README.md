@@ -36,7 +36,7 @@ The exercise involved provisioning a complete AWS environment to support a web a
 - **Route 53** is stubbed; assumes domain already exists.
 - **Lambda ZIP** and handler were not created to stay within scope.
 - **RDS-to-Lambda connection** was not implemented due to complexity of subnet and timeout configuration — documented for future.
-
+- **RDS Requires 2 AZs** I had to create 2 private subnets instead of one (Could've used the public one but that's not recommended)
 ---
 
 ## 📂 Project Structure

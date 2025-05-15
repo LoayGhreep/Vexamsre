@@ -11,6 +11,5 @@ variable "vpc_cidr_block" {
 }
 
 variable "ec2_ami_id" {
-  default     = "ami-12345678" # placeholder
-  description = "Mock AMI ID for validation"
-}
+  default     = "ami-0c101f26f147fa7fd"
+  }
