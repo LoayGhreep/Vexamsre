@@ -46,6 +46,6 @@ exercise-1/
 
 ## Next
 
-- Add RDS module (with private subnet group, encryption, SG)
+- Add RDS module (with private subnet group, encryption, SG) [✔️ Done]
 - Add S3 + IAM (read-only access for EC2)
 - Add Lambda + API Gateway (stub + VPC config)
