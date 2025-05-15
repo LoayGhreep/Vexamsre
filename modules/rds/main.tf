@@ -36,7 +36,7 @@ resource "aws_db_instance" "rds_instance" {
   allocated_storage      = 20
   storage_type           = "gp2"
   engine                 = "postgres"
-  engine_version         = "13.4"
+  engine_version         = "17.5-R1"
   instance_class         = "db.t3.micro"
   username               = "admin"
   password               = "mockpassword123"
