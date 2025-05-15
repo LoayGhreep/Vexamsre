@@ -32,3 +32,7 @@ module "s3_iam" {
 module "lambda_apigw" {
   source = "./modules/lambda_apigw"
 }
+
+resource "random_id" "suffix" {
+  byte_length = 4
+}
